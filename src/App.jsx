@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import EditorPage from "./pages/EditorPage";
 import TailwindConverter from "./components/TailwindConverter";
-import Minifier from "./pages/minifier";
+import Minifier from "./pages/Minifier";
 
 const App = () => {
   return (
