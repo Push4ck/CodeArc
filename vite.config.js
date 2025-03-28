@@ -1,14 +1,12 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
-import NodePolyfills from "vite-plugin-node-polyfills";
+import EnvironmentPlugin from "vite-plugin-environment";
 
 export default defineConfig({
-  plugins: [react(), tailwindcss(), NodePolyfills()],
-  resolve: {
-    alias: {
-      url: "url-polyfill",
-      os: "os-browserify/browser",
-    },
-  },
+  plugins: [
+    react(),
+    tailwindcss(),
+    EnvironmentPlugin(["NODE_ENV"]), // Add environment variables you use
+  ],
 });
