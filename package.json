@@ -36,6 +36,7 @@
     "globals": "^15.15.0",
     "os-browserify": "^0.3.0",
     "process": "^0.11.10",
+    "rollup": "^4.37.0",
     "url-polyfill": "^1.1.13",
     "vite": "^6.2.0"
   }
