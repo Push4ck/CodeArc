@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -10,6 +11,7 @@ import Minifier from "./pages/Minifier";
 const App = () => {
   return (
     <>
+      <Toaster position="top-right" reverseOrder={false} />
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />

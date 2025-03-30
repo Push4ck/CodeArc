@@ -44,7 +44,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="flex items-center justify-center">
-            <ul className="flex gap-4">
+            <ul className="flex gap-4 font-medium">
               <li>
                 <Link
                   to="/terms"

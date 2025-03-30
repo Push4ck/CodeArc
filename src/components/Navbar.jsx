@@ -5,10 +5,13 @@ const Navbar = () => {
   return (
     <>
       <nav className="py-4 px-20 flex justify-between items-center">
-        <NavLink to="/" className="text-xl font-bold">
+        <NavLink
+          to="/"
+          className="text-xl font-bold text-[var(--clr-primary-a0)]"
+        >
           CodeArc
         </NavLink>
-        <div className="flex gap-4">
+        <div className="flex gap-4 font-medium">
           <NavLink
             to="/code-editor"
             className={({ isActive }) =>

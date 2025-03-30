@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaCode, FaBolt, FaTools } from "react-icons/fa";
 import FeatureCard from "../components/FeatureCard";
 import TestimonialsSection from "../components/TestimonialsSection";
+import featureData from "../data/featureData";
 import { Typewriter } from "react-simple-typewriter";
 
 const HomePage = () => {
@@ -32,22 +32,15 @@ const HomePage = () => {
         {/* Features Section */}
         <section className="py-20 px-20">
           <h2 className="text-4xl font-bold text-center mb-12">Why CodeArc?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-            <FeatureCard
-              icon={<FaCode size={50} />}
-              title="Sleek & Powerful"
-              desc="Write and preview code with a premium editor experience."
-            />
-            <FeatureCard
-              icon={<FaBolt size={50} />}
-              title="Blazing Fast"
-              desc="Optimized for speed and performance without any lags."
-            />
-            <FeatureCard
-              icon={<FaTools size={50} />}
-              title="More Features Coming"
-              desc="Future tools like AI code suggestions & Tailwind to CSS conversion."
-            />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16">
+            {featureData.map((feature, index) => (
+              <FeatureCard
+                key={index}
+                img={feature.img}
+                title={feature.title}
+                desc={feature.desc}
+              />
+            ))}
           </div>
         </section>
 
@@ -67,11 +60,11 @@ const HomePage = () => {
               />
             </div>
 
-            <div className="w-full h-72 flex items-center justify-center">
-              <video
-                src="/your-video.mp4"
-                controls
-                className="w-full h-full object-cover rounded-lg"
+            <div>
+              <img
+                src="/assets/working.png"
+                alt=""
+                className="w-full object-cover"
               />
             </div>
           </div>

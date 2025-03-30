@@ -1,9 +1,18 @@
 import { FaCopy, FaDownload } from "react-icons/fa";
+import { toast } from "react-hot-toast";
 
 const MinifierBox = ({ title, value, onChange, readOnly, showButtons }) => {
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(value);
-    alert("Copied to clipboard!");
+  const copyToClipboard = async () => {
+    console.log("Copy button clicked"); // Debug log
+
+    try {
+      await navigator.clipboard.writeText(value);
+      console.log("Copied successfully"); // Debug log
+      toast.success("Copied to clipboard!");
+    } catch (error) {
+      console.error("Clipboard copy error:", error);
+      toast.error("Failed to copy!");
+    }
   };
 
   const downloadFile = () => {

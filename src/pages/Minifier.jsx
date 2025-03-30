@@ -3,6 +3,7 @@ import { minify as minifyHTML } from "html-minifier-terser";
 import * as csso from "csso";
 import { minify as minifyJS } from "terser";
 import { FaCopy, FaDownload } from "react-icons/fa";
+import { toast } from "react-hot-toast";
 
 const Minifier = () => {
   const [activeTab, setActiveTab] = useState("html");
@@ -11,33 +12,52 @@ const Minifier = () => {
 
   const minifyCode = async () => {
     try {
+      let minified = "";
       if (activeTab === "html") {
-        const minified = await minifyHTML(input, { collapseWhitespace: true });
-        setOutput(minified);
+        minified = await minifyHTML(input, { collapseWhitespace: true });
       } else if (activeTab === "css") {
-        const minified = csso.minify(input).css;
-        setOutput(minified);
+        minified = csso.minify(input).css;
       } else if (activeTab === "js") {
-        const minified = await minifyJS(input);
-        setOutput(minified.code || "Error in JS code");
+        const result = await minifyJS(input);
+        minified = result.code || "Error in JS code";
       }
+      setOutput(minified);
+      toast.success(`${activeTab.toUpperCase()} minified successfully!`);
     } catch (error) {
       setOutput("Minification error: " + error.message);
+      toast.error("Minification failed!");
     }
   };
 
-  const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text);
+  const copyToClipboard = async () => {
+    if (!output) {
+      toast.error("Nothing to copy!");
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(output);
+      toast.success("Copied to clipboard!");
+    } catch (error) {
+      toast.error("Failed to copy!");
+      console.error("Clipboard copy error:", error);
+    }
   };
 
-  const downloadFile = (content, filename) => {
-    const blob = new Blob([content], { type: "text/plain" });
+  const downloadFile = () => {
+    if (!output) {
+      toast.error("Nothing to download!");
+      return;
+    }
+    const fileExtension =
+      activeTab === "html" ? "html" : activeTab === "css" ? "css" : "js";
+    const blob = new Blob([output], { type: "text/plain" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = filename;
+    link.download = `minified.${fileExtension}`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    toast.success("File downloaded!");
   };
 
   return (
