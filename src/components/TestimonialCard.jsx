@@ -1,5 +1,5 @@
 import React from "react";
-import { FaTwitter } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 const TestimonialCard = ({ avatar, name, handle, content }) => {
   return (
@@ -17,7 +17,7 @@ const TestimonialCard = ({ avatar, name, handle, content }) => {
               <p className="text-gray-400 text-sm">{handle}</p>
             </div>
           </div>
-          <FaTwitter className="text-blue-400" />
+          <FaXTwitter />
         </div>
         <p className="text-gray-300 italic leading-relaxed">{content}</p>
       </div>

@@ -12,7 +12,6 @@ const TailwindToCSSConverter = () => {
       return;
     }
 
-    // Create an iframe to process Tailwind styles
     const iframe = document.createElement("iframe");
     document.body.appendChild(iframe);
     const doc = iframe.contentDocument;
@@ -29,7 +28,6 @@ const TailwindToCSSConverter = () => {
     `);
     doc.close();
 
-    // Extract computed styles after Tailwind processes them
     setTimeout(() => {
       const targetElement = doc.getElementById("target");
       if (targetElement) {
@@ -44,39 +42,44 @@ const TailwindToCSSConverter = () => {
         setCssOutput(extractedCSS);
       }
 
-      // Cleanup iframe to avoid memory leaks
       document.body.removeChild(iframe);
     }, 1000);
   }, [tailwindCode]);
 
   return (
-    <div className="grid grid-cols-2 gap-4 p-6 h-screen bg-gray-900 text-white">
-      {/* Tailwind Input */}
-      <div className="flex flex-col">
-        <h2 className="text-lg font-semibold">Tailwind CSS Code</h2>
-        <textarea
-          className="w-full h-full p-4 rounded-lg bg-gray-800 text-white border border-gray-700"
-          placeholder="Enter TailwindCSS code here..."
-          value={tailwindCode}
-          onChange={(e) => setTailwindCode(e.target.value)}
-        />
-      </div>
-
-      {/* Output */}
-      <div className="flex flex-col gap-4">
-        {/* HTML Output */}
-        <div className="relative p-4 rounded-lg bg-gray-800 border border-gray-700">
-          <h2 className="text-lg font-semibold">HTML Output</h2>
-          <pre className="whitespace-pre-wrap text-sm">{htmlOutput}</pre>
+    <>
+      <div className="grid grid-cols-2 gap-4 p-6 min-h-screen bg-[var(--clr-dark-a0)] text-[var(--clr-light-a0)]">
+        {/* Tailwind Input */}
+        <div className="flex flex-col space-y-2">
+          <h2 className="text-lg font-semibold">Tailwind CSS Code</h2>
+          <textarea
+            className="w-full h-full p-4 rounded-lg text-[var(--clr-light-a0)] bg-[var(--clr-surface-a0)] resize-none"
+            placeholder="Enter TailwindCSS code here..."
+            value={tailwindCode}
+            onChange={(e) => setTailwindCode(e.target.value)}
+          />
         </div>
 
-        {/* CSS Output */}
-        <div className="relative p-4 rounded-lg bg-gray-800 border border-gray-700">
-          <h2 className="text-lg font-semibold">CSS Output</h2>
-          <pre className="whitespace-pre-wrap text-sm">{cssOutput}</pre>
+        {/* Output */}
+        <div className="flex flex-col gap-4">
+          {/* HTML Output */}
+          <div className="relative space-y-2">
+            <h2 className="text-lg font-semibold">HTML Output</h2>
+            <pre className="whitespace-pre-wrap text-sm text-[var(--clr-surface-tonal-a50)] bg-[var(--clr-surface-a0)] p-4 rounded-lg min-h-54">
+              {htmlOutput}
+            </pre>
+          </div>
+
+          {/* CSS Output */}
+          <div className="relative space-y-2">
+            <h2 className="text-lg font-semibold">CSS Output</h2>
+            <pre className="whitespace-pre-wrap text-sm text-[var(--clr-surface-tonal-a50)] bg-[var(--clr-surface-a0)] p-4 rounded-lg min-h-54">
+              {cssOutput}
+            </pre>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

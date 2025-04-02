@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
-      <nav className="py-4 px-20 flex justify-between items-center">
+      <nav className="py-4 px-20 flex justify-between items-center border-b-2 border-[var(--clr-surface-tonal-a0)]">
         <NavLink
           to="/"
           className="text-xl font-bold text-[var(--clr-primary-a0)]"
@@ -16,8 +16,8 @@ const Navbar = () => {
             to="/code-editor"
             className={({ isActive }) =>
               isActive
-                ? "text-[var(--clr-primary-a0)] hover:text-[var(--clr-primary-a0)]"
-                : "text-[var(--clr-light-a0)] hover:text-[var(--clr-primary-a30)]"
+                ? "text-[var(--clr-primary-a0)] border-b-2 border-[var(--clr-primary-a0)] hover:text-[var(--clr-primary-a0)]"
+                : "text-[var(--clr-light-a0)] border-b-2 border-transparent hover:text-[var(--clr-primary-a30)] hover:border-b-2 hover:border-[var(--clr-primary-a30)]"
             }
           >
             Editor
@@ -26,8 +26,8 @@ const Navbar = () => {
             to="/tailwind-to-css-convertor"
             className={({ isActive }) =>
               isActive
-                ? "text-[var(--clr-primary-a0)] hover:text-[var(--clr-primary-a0)]"
-                : "text-[var(--clr-light-a0)] hover:text-[var(--clr-primary-a30)]"
+                ? "text-[var(--clr-primary-a0)] border-b-2 border-[var(--clr-primary-a0)] hover:text-[var(--clr-primary-a0)]"
+                : "text-[var(--clr-light-a0)] border-b-2 border-transparent hover:text-[var(--clr-primary-a30)] hover:border-b-2 hover:border-[var(--clr-primary-a30)]"
             }
           >
             Convertor
@@ -36,8 +36,8 @@ const Navbar = () => {
             to="/code-minifier"
             className={({ isActive }) =>
               isActive
-                ? "text-[var(--clr-primary-a0)] hover:text-[var(--clr-primary-a0)]"
-                : "text-[var(--clr-light-a0)] hover:text-[var(--clr-primary-a30)]"
+                ? "text-[var(--clr-primary-a0)] border-b-2 border-[var(--clr-primary-a0)] hover:text-[var(--clr-primary-a0)]"
+                : "text-[var(--clr-light-a0)] border-b-2 border-transparent hover:text-[var(--clr-primary-a30)] hover:border-b-2 hover:border-[var(--clr-primary-a30)]"
             }
           >
             Minifier

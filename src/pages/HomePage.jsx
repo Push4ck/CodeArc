@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Typewriter } from "react-simple-typewriter";
+import { BsRocketTakeoff } from "react-icons/bs";
 import FeatureCard from "../components/FeatureCard";
 import TestimonialsSection from "../components/TestimonialsSection";
 import featureData from "../data/featureData";
-import { Typewriter } from "react-simple-typewriter";
 
 const HomePage = () => {
   return (
@@ -22,8 +23,8 @@ const HomePage = () => {
               conversion, and code minification.
             </p>
             <Link to="/code-editor">
-              <button className="mt-6 bg-[var(--clr-light-a0)] text-[var(--clr-dark-a0)] hover:bg-[var(--clr-primary-a0)] hover:text-[var(--clr-light-a0)] px-8 py-3 rounded-xl text-lg font-medium shadow-lg transform transition hover:scale-105 cursor-pointer">
-                Start Coding
+              <button className="mt-6 bg-[var(--clr-light-a0)] text-[var(--clr-dark-a0)] hover:bg-[var(--clr-primary-a0)] hover:text-[var(--clr-light-a0)] flex items-center gap-2 px-8 py-3 rounded-xl text-lg font-medium shadow-lg transform transition hover:scale-105 cursor-pointer">
+                Start Coding <BsRocketTakeoff />
               </button>
             </Link>
           </div>
